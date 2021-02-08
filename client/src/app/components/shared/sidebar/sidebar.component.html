@@ -1,0 +1,57 @@
+<aside class="sidebar bg-dark">
+  <div class="main-grid">
+    <span class="section-title section-title-1 mt-3 ml-3">Break</span>
+
+    <div
+      *ngFor="let timer of timers; let i = index"
+      class="grid"
+      [class]="'grid-' + (+i + 1)"
+    >
+      <fa-icon
+        class="icon ml-3"
+        [class]="'icon-' + (+i + 1)"
+        [icon]="icons[+i]"
+      ></fa-icon>
+      <span class="title" [class]="'title-' + (+i + 1)">Normal</span>
+      <span class="remaining" [class]="'remaining-' + (+i + 1)"
+        >due in {{ timers[0].remaining | date: "H:mm:ss":"UTC" }}</span
+      >
+      <span class="configs" [class]="'configs-' + (+i + 1)">
+        configured for {{ timers[0].config | date: "H:mm:ss":"UTC" }}
+      </span>
+
+      <button
+        mat-flat-button
+        color="primary"
+        class="button"
+        [class]="'button-' + (+i + i === 0 ? 1 : 3)"
+      >
+        Start
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="button"
+        [class]="'button-' + (+i + i === 0 ? 2 : 4)"
+      >
+        Config
+      </button>
+    </div>
+
+    <span class="section-title section-title-2 mt-3 ml-3">Configation</span>
+    <div
+      *ngFor="let menu of menus; let i = index"
+      class="grid pointer"
+      [class]="'grid-' + (+i + 3)"
+    >
+      <fa-icon
+        class="icon ml-3"
+        [class]="'icon-' + (+i + 3)"
+        [icon]="icons[+i + 2]"
+      ></fa-icon>
+      <span class="title menu" [class]="'menu-' + (+i + 1)">{{
+        menu.name
+      }}</span>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,26 @@
+@import './scss/variables';
+@import "./scss/theme.scss";
+@import "~bootstrap/dist/css/bootstrap-grid.min.css";
+// @import "~bootstrap/dist/css/bootstrap-utilities.min.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, span, p {
+  color: $light;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.mat-button-wrapper {
+  color: white !important;
+}
+
+.bg-dark {
+  background: $dark;
+}
