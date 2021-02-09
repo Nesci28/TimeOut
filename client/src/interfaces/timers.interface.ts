@@ -1,5 +1,6 @@
 export interface ITimer {
-  interval: number;
+  interval: any;
+  timer: number;
   remaining: number;
   config: number;
 }

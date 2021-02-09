@@ -14,8 +14,10 @@ dependencies:
   '@fortawesome/free-brands-svg-icons': 5.15.2
   '@fortawesome/free-regular-svg-icons': 5.15.2
   '@fortawesome/free-solid-svg-icons': 5.15.2
-  bootstrap: 4.6.0
-  date-fns: 2.17.0
+  '@rxweb/reactive-form-validators': 2.1.2
+  bootstrap: 5.0.0-beta1
+  ng2-trim-directive: 2.3.4
+  ngx-mask: 11.1.4_5246fcd582d86538243368e001a5bfa3
   rxjs: 6.6.3
   tslib: 2.1.0
   zone.js: 0.10.3
@@ -1538,6 +1540,12 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-LtWTicuF2wp7PNTuyCwABx7nNG+DnzSE8gN0iWxkC6mpgm/iOPu0ZMTkXuCxmJxtWFsDxUaixM9COSNJEMUfuQ==
+  /@rxweb/reactive-form-validators/2.1.2:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    resolution:
+      integrity: sha512-8TYYZnloCegoZrxgj2Ko57R/tTJO7UjBqOpRQfEYLYLJit7fepMS2okmfCq0tqNZQiUmdqs7eF1p9NrOIVqPQg==
   /@schematics/angular/11.0.7:
     dependencies:
       '@angular-devkit/core': 11.0.7
@@ -2403,13 +2411,12 @@ packages:
     optional: true
     resolution:
       integrity: sha512-RwywHlpCRc3/Wh81MiCKun4ydaIFyW5Ea6JbL6sRCVx5q5irDw7pMXBUFYF/jArQ6YrG36q0kpovc9P/Kd3I4g==
-  /bootstrap/4.6.0:
+  /bootstrap/5.0.0-beta1:
     dev: false
     peerDependencies:
-      jquery: 1.9.1 - 3
-      popper.js: ^1.16.1
+      '@popperjs/core': ^2.5.4
     resolution:
-      integrity: sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
+      integrity: sha512-UrHApw/WRmT7l2rlDdn5iXr7Jps/LlMZtJlLn9G41aGDfss48hyDeYyHtX1C6NHKVcmdUarGG+ve0LZB5iHyTQ==
   /boxen/4.2.0:
     dependencies:
       ansi-align: 3.0.0
@@ -3593,6 +3600,7 @@ packages:
     resolution:
       integrity: sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   /date-fns/2.17.0:
+    dev: true
     engines:
       node: '>=0.11'
     resolution:
@@ -6838,6 +6846,23 @@ packages:
     dev: true
     resolution:
       integrity: sha1-yobR/ogoFpsBICCOPchCS524NCw=
+  /ng2-trim-directive/2.3.4:
+    dev: false
+    resolution:
+      integrity: sha512-G1kL0AkrQnME1GQhzISfy8/Kje6hOd37T92pwKx/b1dlzUVVuVwECU2haTGCplUTc50cajHaNlMlzKj0qCOVCA==
+  /ngx-mask/11.1.4_5246fcd582d86538243368e001a5bfa3:
+    dependencies:
+      '@angular/common': 11.0.9_@angular+core@11.0.9+rxjs@6.6.3
+      '@angular/core': 11.0.9_rxjs@6.6.3+zone.js@0.10.3
+      '@angular/forms': 11.0.9_58109f712dfe1a39e6d2d2dc0ca2a98b
+      tslib: 2.1.0
+    dev: false
+    peerDependencies:
+      '@angular/common': '>=10.0.0'
+      '@angular/core': '>=10.0.0'
+      '@angular/forms': '>=10.0.0'
+    resolution:
+      integrity: sha512-TyKObQvgr6xol1/cFuI8pyVF6kGQVgw7Xl83eOv8SfoOm8iUdfQODlyUOCGu1yRnQCBj/IF46RFDd1DlJJF2nw==
   /nice-try/1.0.5:
     dev: true
     resolution:
@@ -10663,12 +10688,12 @@ specifiers:
   '@fortawesome/free-brands-svg-icons': ^5.15.2
   '@fortawesome/free-regular-svg-icons': ^5.15.2
   '@fortawesome/free-solid-svg-icons': ^5.15.2
+  '@rxweb/reactive-form-validators': ^2.1.2
   '@types/jasmine': ~3.6.0
   '@types/node': ^12.11.1
-  bootstrap: ^4.6.0
+  bootstrap: ^5.0.0-beta1
   codelyzer: ^6.0.0
   concurrently: ^5.3.0
-  date-fns: ^2.17.0
   electron: ^11.2.3
   electron-builder: ^22.9.1
   jasmine-core: ~3.6.0
@@ -10678,6 +10703,8 @@ specifiers:
   karma-coverage: ~2.0.3
   karma-jasmine: ~4.0.0
   karma-jasmine-html-reporter: ^1.5.0
+  ng2-trim-directive: ^2.3.4
+  ngx-mask: ^11.1.4
   protractor: ~7.0.0
   rimraf: ^3.0.2
   rxjs: ~6.6.0

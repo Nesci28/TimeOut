@@ -41,8 +41,10 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "bootstrap": "^4.6.0",
-    "date-fns": "^2.17.0",
+    "@rxweb/reactive-form-validators": "^2.1.2",
+    "bootstrap": "^5.0.0-beta1",
+    "ng2-trim-directive": "^2.3.4",
+    "ngx-mask": "^11.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

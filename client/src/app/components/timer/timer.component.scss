@@ -1,0 +1,33 @@
+@import '../../../scss/variables';
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: $light !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: $light !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: $light !important;
+}
+
+::ng-deep .mat-form-field{
+  color: $light;
+}
+
+::ng-deep .mat-form-field-label {
+  color: $light !important;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: $light !important;
+}
+
+.title {
+  font-size: 1rem;
+  color: $lighter;
+}

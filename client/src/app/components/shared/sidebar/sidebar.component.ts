@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faBullseye,
   faCogs,
@@ -9,6 +10,7 @@ import {
 import { Menu } from '../../../../interfaces/menu.interface';
 import { IQuote } from '../../../../interfaces/quotes.interface';
 import { ITimer } from '../../../../interfaces/timers.interface';
+import { BaseComponent } from '../base/base.component';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -16,7 +18,9 @@ import { SidebarService } from './sidebar.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit, OnDestroy {
+export class SidebarComponent
+  extends BaseComponent
+  implements OnInit, OnDestroy {
   icons: IconDefinition[] = [faMugHot, faBullseye, faCogs];
 
   menus: Menu[] = [
@@ -26,26 +30,33 @@ export class SidebarComponent implements OnInit, OnDestroy {
     },
   ];
 
+  // TODO: Change timer for the real saved value in localStorage
   timers: ITimer[] = [
     {
-      interval: 0,
+      interval: undefined,
+      timer: 1000 * 60 * 60,
       remaining: 1000 * 60 * 60,
       config: Number(localStorage.getItem('btConfig')) || 1000 * 60 * 60,
     },
     {
-      interval: 0,
+      interval: undefined,
+      timer: 1000 * 60 * 30,
       remaining: 1000 * 60 * 30,
       config: Number(localStorage.getItem('stConfig')) || 1000 * 60 * 30,
     },
   ];
   quotes: IQuote[] = [];
 
-  constructor(private sidebarService: SidebarService) {}
+  constructor(private sidebarService: SidebarService, router: Router) {
+    super(router);
+  }
 
   async ngOnInit(): Promise<void> {
-    setInterval(() => {
-      this.timers.forEach((_, i) => this.updateRemaining(i));
-    }, 1000);
+    this.timers.forEach((t, i) => {
+      t.interval = setInterval(() => {
+        this.updateRemaining(i);
+      }, 1000);
+    });
     this.quotes = await this.getQuotes();
   }
 
@@ -69,5 +80,17 @@ export class SidebarComponent implements OnInit, OnDestroy {
   async takeBreak(): Promise<void> {
     const quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
     console.log('quote :>> ', quote);
+  }
+
+  redirect(url: string, queryParams: { [key: string]: string }): void {
+    this.redirectTo(url, queryParams);
+  }
+
+  restart(index: number): void {
+    clearInterval(this.timers[index].interval);
+    this.timers[index].remaining = this.timers[index].timer;
+    this.timers[index].interval = setInterval(() => {
+      this.updateRemaining(index);
+    }, 1000);
   }
 }

@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <section>
+    <mat-checkbox formControlName="quotes" color="primary">
+      Show quotes on the break overlay?
+    </mat-checkbox>
+
+    <ul *ngIf="form.get('quotes')!.value" class="ml-3">
+      <li *ngFor="let category of categories">
+        <mat-checkbox [formControlName]="category.name" color="primary">
+          {{ category.description }}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </section>
+
+  <div class="d-flex justify-content-end w-100">
+    <button mat-raised-button color="accent" (click)="save()">Save</button>
+  </div>
+</form>

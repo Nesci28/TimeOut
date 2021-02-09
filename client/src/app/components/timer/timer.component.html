@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+  <p class="title mb-3">{{ currentSkipName | titlecase }}</p>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Time between breaks</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControlName]="currentSkipName + 'Timer'"
+        mask="00:00"
+        [showMaskTyped]="true"
+      />
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-checkbox [formControlName]="currentSkipName" color="primary">
+      {{ skip.description }}
+    </mat-checkbox>
+    <ul *ngIf="form.get(currentSkipName)!.value" class="ml-3">
+      <li>
+        <mat-form-field>
+          <mat-label>Max skips repetition</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControlName]="currentSkipName + 'Skips'"
+            mask="0*"
+          />
+        </mat-form-field>
+      </li>
+    </ul>
+  </section>
+
+  <div class="d-flex justify-content-end w-100">
+    <button mat-raised-button color="accent" (click)="save()">Save</button>
+  </div>
+</form>

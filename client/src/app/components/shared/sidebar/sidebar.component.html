@@ -1,23 +1,26 @@
-<aside class="sidebar bg-dark">
+<aside class="sidebar bg-dark p-2">
   <div class="main-grid">
     <span class="section-title section-title-1 mt-3 ml-3">Break</span>
 
     <div
       *ngFor="let timer of timers; let i = index"
-      class="grid"
+      class="grid pointer"
       [class]="'grid-' + (+i + 1)"
+      (click)="redirect('timer', { id: i.toString() })"
     >
       <fa-icon
         class="icon ml-3"
         [class]="'icon-' + (+i + 1)"
         [icon]="icons[+i]"
       ></fa-icon>
-      <span class="title" [class]="'title-' + (+i + 1)">Normal</span>
+      <h6 class="title" [class]="'title-' + (+i + 1)">
+        {{ (i === 0 ? "normal" : "micro") | titlecase }}
+      </h6>
       <span class="remaining" [class]="'remaining-' + (+i + 1)"
-        >due in {{ timers[0].remaining | date: "H:mm:ss":"UTC" }}</span
+        >due in {{ timers[i].remaining | date: "H:mm:ss":"UTC" }}</span
       >
       <span class="configs" [class]="'configs-' + (+i + 1)">
-        configured for {{ timers[0].config | date: "H:mm:ss":"UTC" }}
+        configured for {{ timers[i].config | date: "H:mm:ss":"UTC" }}
       </span>
 
       <button
@@ -25,17 +28,18 @@
         color="primary"
         class="button"
         [class]="'button-' + (+i + i === 0 ? 1 : 3)"
+        (click)="restart(i)"
       >
-        Start
+        Restart
       </button>
-      <button
+      <!-- <button
         mat-flat-button
         color="primary"
         class="button"
         [class]="'button-' + (+i + i === 0 ? 2 : 4)"
       >
         Config
-      </button>
+      </button> -->
     </div>
 
     <span class="section-title section-title-2 mt-3 ml-3">Configation</span>
@@ -43,15 +47,14 @@
       *ngFor="let menu of menus; let i = index"
       class="grid pointer"
       [class]="'grid-' + (+i + 3)"
+      (click)="redirect('settings', { id: i.toString() })"
     >
       <fa-icon
         class="icon ml-3"
         [class]="'icon-' + (+i + 3)"
         [icon]="icons[+i + 2]"
       ></fa-icon>
-      <span class="title menu" [class]="'menu-' + (+i + 1)">{{
-        menu.name
-      }}</span>
+      <h6 class="title menu" [class]="'menu-' + (+i + 1)">{{ menu.name }}</h6>
     </div>
   </div>
 </aside>

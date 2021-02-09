@@ -1,7 +1,9 @@
 @import './scss/variables';
 @import "./scss/theme.scss";
+@import "./scss/utilities.scss";
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
-// @import "~bootstrap/dist/css/bootstrap-utilities.min.css";
+@import "~bootstrap/dist/css/bootstrap-utilities.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,600&display=swap');
 
 * {
   margin: 0;
@@ -10,8 +12,22 @@
 }
 
 h1, h2, h3, h4, h5, h6, span, p {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   color: $light;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: italic;
+  font-weight: 600;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+
 
 .pointer {
   cursor: pointer !important;
@@ -22,5 +38,9 @@ h1, h2, h3, h4, h5, h6, span, p {
 }
 
 .bg-dark {
-  background: $dark;
+  background: $dark !important;
+}
+
+.bg-darker {
+  background: $darker !important;
 }
