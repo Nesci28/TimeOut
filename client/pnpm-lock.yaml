@@ -17,6 +17,7 @@ dependencies:
   '@rxweb/reactive-form-validators': 2.1.2
   bootstrap: 5.0.0-beta1
   ng2-trim-directive: 2.3.4
+  ngx-electron: 2.2.0_71406402a3f451728b987e4c95445120
   ngx-mask: 11.1.4_5246fcd582d86538243368e001a5bfa3
   rxjs: 6.6.3
   tslib: 2.1.0
@@ -6850,6 +6851,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-G1kL0AkrQnME1GQhzISfy8/Kje6hOd37T92pwKx/b1dlzUVVuVwECU2haTGCplUTc50cajHaNlMlzKj0qCOVCA==
+  /ngx-electron/2.2.0_71406402a3f451728b987e4c95445120:
+    dependencies:
+      '@angular/core': 11.0.9_rxjs@6.6.3+zone.js@0.10.3
+      electron: 11.2.3
+      rxjs: 6.6.3
+      tslib: 1.14.1
+    dev: false
+    peerDependencies:
+      '@angular/core': '>=8.0.0'
+      electron: '>=6.0.10'
+      rxjs: '>=6.3.0'
+    resolution:
+      integrity: sha512-Yl7Dsnvp97k0XpIuiB54X7Ij2+zU5x0pCAYnN//VZ9tF7c6S3//OZ9dN9Et7p/zIjCV3Hg9vyw68dPJEZGk+LQ==
   /ngx-mask/11.1.4_5246fcd582d86538243368e001a5bfa3:
     dependencies:
       '@angular/common': 11.0.9_@angular+core@11.0.9+rxjs@6.6.3
@@ -10704,6 +10718,7 @@ specifiers:
   karma-jasmine: ~4.0.0
   karma-jasmine-html-reporter: ^1.5.0
   ng2-trim-directive: ^2.3.4
+  ngx-electron: ^2.2.0
   ngx-mask: ^11.1.4
   protractor: ~7.0.0
   rimraf: ^3.0.2

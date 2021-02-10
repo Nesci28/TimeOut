@@ -4,6 +4,7 @@
   "main": "dist/client/index.js",
   "scripts": {
     "ng": "ng",
+    "serve": "ng serve",
     "electron": "wait-on http://localhost:4200 && electron .",
     "prestart": "npm run clean",
     "start": "concurrently -k \"ng serve\" \"npm run electron\"",
@@ -44,6 +45,7 @@
     "@rxweb/reactive-form-validators": "^2.1.2",
     "bootstrap": "^5.0.0-beta1",
     "ng2-trim-directive": "^2.3.4",
+    "ngx-electron": "^2.2.0",
     "ngx-mask": "^11.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

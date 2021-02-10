@@ -56,5 +56,17 @@
       ></fa-icon>
       <h6 class="title menu" [class]="'menu-' + (+i + 1)">{{ menu.name }}</h6>
     </div>
+
+    <span class="section-title section-title-3 mt-3 ml-3">Debug</span>
+    <div class="grid grid-4">
+      <button
+        mat-flat-button
+        color="primary"
+        class="button button-5"
+        (click)="openOverlay()"
+      >
+        Overlay
+      </button>
+    </div>
   </div>
 </aside>

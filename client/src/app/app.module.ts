@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxElectronModule } from 'ngx-electron';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
+    NgxElectronModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

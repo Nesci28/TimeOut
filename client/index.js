@@ -1,8 +1,40 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain, screen } = require("electron");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+let overlays;
+
+ipcMain.on("showOverlay", () => {
+  overlays = openWindowOnAllMonitors();
+  overlays.forEach((o) => o.loadFile("./src/overlay/overlay.html"));
+});
+
+function openWindowOnAllMonitors() {
+  const monitors = screen.getAllDisplays();
+
+  const newWindows = [];
+  monitors.forEach((m) => {
+    const { x, y } = m.bounds;
+    const newWindow = new BrowserWindow({
+      show: true,
+      x: x + 50, // Arbitrary offsets to ensure it's on the right display/monitor
+      y: y + 50,
+      width: 600,
+      height: 300,
+      frame: false,
+      transparent: false,
+      alwaysOnTop: true,
+      visibleOnAllWorkspaces: true,
+      hasShadow: false,
+      webPreferences: { nodeIntegration: true },
+    });
+    if (process.platform === "darwin") newWindow.maximize();
+    newWindows.push(newWindow);
+  });
+
+  return newWindows;
+}
 
 function createWindow() {
   // Create the browser window.

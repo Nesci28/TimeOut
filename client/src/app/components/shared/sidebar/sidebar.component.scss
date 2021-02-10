@@ -28,7 +28,7 @@ fa-icon {
     grid-template-rows: 1fr 1fr 1fr;
     grid-area: grid1;
     grid-template-areas:
-    'icon1        title1        title1      title1        .           button1   button1'
+    'icon1        title1        title1      title1        .           button1 button1'
     '.            remaining1    remaining1  remaining1    remaining1  button1 button1'
     '.            configs1      configs1    configs1      configs1    button2 button2'
     '.            .             .           .             .           button2 button2';
@@ -63,6 +63,16 @@ fa-icon {
     &:hover {
       background: #001f00;
     }
+  }
+  &-4 {
+    display: flex;
+    padding: 0.25rem 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-area: grid4;
+    grid-template-areas:
+    'button5 button5 .  .  .  .  .  .'
+    'button5 button5 .  .  .  .  .  .';
   }
 }
 .icon {
@@ -124,6 +134,10 @@ fa-icon {
   &-4 {
     grid-area: button4;
   }
+  &-5 {
+    display: flex;
+    grid-area: button5;
+  }
 }
 .section-title {
   &-1 {
@@ -131,6 +145,9 @@ fa-icon {
   }
   &-2 {
     grid-area: sectionTitle2;
+  }
+  &-3 {
+    grid-area: sectionTitle3;
   }
 }
 .menu {
@@ -144,10 +161,10 @@ fa-icon {
 
 
 .main-grid {
-  height: 250px;
+  height: 317px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     'sectionTitle1 sectionTitle1 sectionTitle1 sectionTitle1  sectionTitle1 sectionTitle1 sectionTitle1'
     '.            .             .           .             .            .            .           '
@@ -162,5 +179,11 @@ fa-icon {
     '.            .             .           .             .            .            .           '
     'sectionTitle2 sectionTitle2 sectionTitle2 sectionTitle2  sectionTitle2 sectionTitle2 sectionTitle2'
     '.            .             .           .             .            .            .           '
-    'grid3        grid3         grid3       grid3         grid3        grid3        grid3       ';
+    'grid3        grid3         grid3       grid3         grid3        grid3        grid3       '
+    '.            .             .           .             .            .            .           '
+    '.            .             .           .             .            .            .           '
+    'sectionTitle3 sectionTitle3 sectionTitle3 sectionTitle3  sectionTitle3 sectionTitle3 sectionTitle3'
+    '.            .             .           .             .            .            .           '
+    'grid4        grid4         grid4       grid4         grid4        grid4        grid4       '
+    'grid4        grid4         grid4       grid4         grid4        grid4        grid4       ';
   }
