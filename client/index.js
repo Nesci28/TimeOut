@@ -5,12 +5,23 @@ const { app, BrowserWindow, ipcMain, screen } = require("electron");
 let win;
 let overlays;
 
-ipcMain.on("showOverlay", () => {
-  overlays = openWindowOnAllMonitors();
-  overlays.forEach((o) => o.loadFile("./src/overlay/overlay.html"));
+ipcMain.on("openOverlays", () => {
+  overlays = openOverlays();
+  overlays.forEach((o) => o.loadURL("http://localhost:4200/overlay"));
+});
+ipcMain.on("closeOverlays", () => {
+  console.log("i am here");
+  closeOverlays();
+});
+ipcMain.on("postponeOverlays", (minute) => {
+  console.log("minute :>> ", minute);
+  closeOverlays();
+  setTimeout(() => {
+    openOverlays();
+  }, minute * 1000);
 });
 
-function openWindowOnAllMonitors() {
+function openOverlays() {
   const monitors = screen.getAllDisplays();
 
   const newWindows = [];
@@ -23,17 +34,30 @@ function openWindowOnAllMonitors() {
       width: 600,
       height: 300,
       frame: false,
-      transparent: false,
+      transparent: true,
       alwaysOnTop: true,
       visibleOnAllWorkspaces: true,
       hasShadow: false,
       webPreferences: { nodeIntegration: true },
+      backgroundColor: "#000",
     });
-    if (process.platform === "darwin") newWindow.maximize();
+    newWindow.loadURL("http://localhost:4200/overlay");
+
+    newWindow.once("ready-to-show", () => {
+      newWindow.show();
+    });
+
+    if (process.platform === "darwin") {
+      newWindow.maximize();
+    }
     newWindows.push(newWindow);
   });
 
   return newWindows;
+}
+function closeOverlays() {
+  console.log("overlays :>> ", overlays);
+  overlays.forEach((o) => o.close());
 }
 
 function createWindow() {

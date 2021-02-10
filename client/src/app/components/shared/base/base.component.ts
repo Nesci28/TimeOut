@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { IpcRenderer } from 'electron';
 import { Subject } from 'rxjs';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   template: '',
@@ -9,7 +11,11 @@ export abstract class BaseComponent implements OnDestroy {
   private readonly destroySubject = new Subject();
   public readonly destroy$ = this.destroySubject.asObservable();
 
-  constructor(public router: Router) {}
+  public readonly renderer: IpcRenderer;
+
+  constructor(public router: Router, public electronService: ElectronService) {
+    this.renderer = this.electronService.ipcRenderer;
+  }
 
   public ngOnDestroy(): void {
     this.destroySubject.next();

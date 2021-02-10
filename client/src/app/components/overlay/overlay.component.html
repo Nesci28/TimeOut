@@ -1,0 +1,16 @@
+<div
+  class="overlay d-flex justify-content-center align-items-center flex-column"
+>
+  <h1 class="mb-4 text-dark">Break!</h1>
+  <div class="d-flex justify-content-around">
+    <button mat-flat-button color="warn" class="mr-4" (click)="skip()">
+      Skip
+    </button>
+    <button mat-flat-button color="accent" class="mr-4" (click)="postpone(1)">
+      Postpone (1 min.)
+    </button>
+    <button mat-flat-button color="accent" class="mr-4" (click)="postpone(5)">
+      Postpone (5 min.)
+    </button>
+  </div>
+</div>

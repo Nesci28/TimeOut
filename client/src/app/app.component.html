@@ -1,7 +1,11 @@
-<div class="d-flex flex-row">
+<div *ngIf="!isOverlay" class="d-flex flex-row">
   <app-sidebar></app-sidebar>
 
   <div class="bg-darker w-100 p-3">
     <router-outlet></router-outlet>
   </div>
+</div>
+
+<div *ngIf="isOverlay">
+  <router-outlet></router-outlet>
 </div>

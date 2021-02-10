@@ -6,7 +6,6 @@ import {
   faMugHot,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
-import { IpcRenderer } from 'electron';
 import { ElectronService } from 'ngx-electron';
 
 import { Menu } from '../../../../interfaces/menu.interface';
@@ -49,15 +48,12 @@ export class SidebarComponent
   ];
   quotes: IQuote[] = [];
 
-  renderer!: IpcRenderer;
-
   constructor(
     private sidebarService: SidebarService,
-    private electronService: ElectronService,
+    electronService: ElectronService,
     router: Router
   ) {
-    super(router);
-    this.renderer = this.electronService.ipcRenderer;
+    super(router, electronService);
   }
 
   async ngOnInit(): Promise<void> {
@@ -104,6 +100,6 @@ export class SidebarComponent
   }
 
   openOverlay(): void {
-    this.renderer.send('showOverlay');
+    this.renderer.send('openOverlays');
   }
 }

@@ -14,6 +14,13 @@ const routes: Routes = [
         (m) => m.SettingsModule
       ),
   },
+  {
+    path: 'overlay',
+    loadChildren: () =>
+      import('./components/overlay/overlay.module').then(
+        (m) => m.OverlayModule
+      ),
+  },
 ];
 
 @NgModule({
