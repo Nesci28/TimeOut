@@ -1,4 +1,7 @@
-const { app, BrowserWindow, ipcMain, screen } = require("electron");
+const { app, BrowserWindow, ipcMain, screen, Tray, Menu } = require("electron");
+const { menubar } = require("menubar");
+const path = require("path");
+const moment = require("moment");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,18 +10,16 @@ let overlays;
 
 ipcMain.on("openOverlays", () => {
   overlays = openOverlays();
-  overlays.forEach((o) => o.loadURL("http://localhost:4200/overlay"));
 });
 ipcMain.on("closeOverlays", () => {
-  console.log("i am here");
   closeOverlays();
 });
-ipcMain.on("postponeOverlays", (minute) => {
-  console.log("minute :>> ", minute);
+ipcMain.on("postponeOverlays", (_, arg) => {
+  const { minute } = arg;
   closeOverlays();
   setTimeout(() => {
-    openOverlays();
-  }, minute * 1000);
+    overlays = openOverlays();
+  }, minute * 60 * 1000);
 });
 
 function openOverlays() {
@@ -29,17 +30,18 @@ function openOverlays() {
     const { x, y } = m.bounds;
     const newWindow = new BrowserWindow({
       show: true,
-      x: x + 50, // Arbitrary offsets to ensure it's on the right display/monitor
+      x: x + 50,
       y: y + 50,
       width: 600,
       height: 300,
-      frame: false,
-      transparent: true,
+      frame: process.env.NODE_ENV === "production" ? false : true,
       alwaysOnTop: true,
       visibleOnAllWorkspaces: true,
       hasShadow: false,
       webPreferences: { nodeIntegration: true },
-      backgroundColor: "#000",
+      transparent: true,
+      vibrancy: "dark",
+      visualEffectState: "active",
     });
     newWindow.loadURL("http://localhost:4200/overlay");
 
@@ -56,7 +58,6 @@ function openOverlays() {
   return newWindows;
 }
 function closeOverlays() {
-  console.log("overlays :>> ", overlays);
   overlays.forEach((o) => o.close());
 }
 
@@ -75,6 +76,10 @@ function createWindow() {
 
   // Open the DevTools.
   win.webContents.openDevTools();
+
+  win.once("ready-to-show", () => {
+    win.show();
+  });
 
   // Emitted when the window is closed.
   win.on("closed", () => {
@@ -109,3 +114,33 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+const trays = {
+  normal: {
+    icon: path.join(__dirname, "src", "assets", "icons", "normal.png"),
+    tooltip: "Normal break",
+    tray: undefined,
+  },
+  micro: {
+    icon: path.join(__dirname, "src", "assets", "icons", "micro.png"),
+    tooltip: "Micro break",
+    tray: undefined,
+  },
+};
+
+app.whenReady().then(() => {
+  Object.keys(trays).forEach((k) => {
+    trays[k].tray = new Tray(trays[k].icon);
+    trays[k].tray.setToolTip(trays[k].tooltip);
+  });
+});
+
+ipcMain.on("setTraysText", (_, arg) => {
+  const { timerType, remaining } = arg;
+
+  trays[timerType].tray.setTitle(convertToTime(remaining));
+});
+
+function convertToTime(ms) {
+  const tempTime = moment.duration(ms);
+  return `${tempTime.hours()}:${tempTime.minutes()}`;
+}

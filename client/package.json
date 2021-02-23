@@ -44,6 +44,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@rxweb/reactive-form-validators": "^2.1.2",
     "bootstrap": "^5.0.0-beta1",
+    "menubar": "^9.0.2",
+    "moment": "^2.29.1",
     "ng2-trim-directive": "^2.3.4",
     "ngx-electron": "^2.2.0",
     "ngx-mask": "^11.1.4",

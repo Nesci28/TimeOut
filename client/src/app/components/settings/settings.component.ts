@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ElectronService } from 'ngx-electron';
 
 import { BaseComponent } from '../shared/base/base.component';
 
@@ -11,12 +12,15 @@ import { BaseComponent } from '../shared/base/base.component';
 export class SettingsComponent extends BaseComponent implements OnInit {
   id!: string;
 
-  constructor(private route: ActivatedRoute, router: Router) {
-    super(router);
+  constructor(
+    private route: ActivatedRoute,
+    router: Router,
+    electronService: ElectronService
+  ) {
+    super(router, electronService);
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.queryParams.id;
-    console.log('this.id :>> ', this.id);
   }
 }

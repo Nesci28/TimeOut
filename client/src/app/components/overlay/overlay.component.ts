@@ -18,6 +18,6 @@ export class OverlayComponent extends BaseComponent {
   }
 
   postpone(minute: number): void {
-    this.renderer.send('postponeOverlays', minute);
+    this.renderer.send('postponeOverlays', { minute });
   }
 }

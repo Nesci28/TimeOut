@@ -72,6 +72,11 @@ export class SidebarComponent
 
   updateRemaining(index: number): void {
     this.timers[index].remaining -= 1000;
+    const timerType = index === 0 ? 'normal' : 'micro';
+    this.renderer.send('setTraysText', {
+      timerType,
+      remaining: this.timers[index].remaining,
+    });
     if (this.timers[index].remaining === 0) {
       this.takeBreak();
       this.timers[index].remaining = this.timers[index].config;

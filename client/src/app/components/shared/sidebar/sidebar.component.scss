@@ -1,13 +1,13 @@
-@import '../../../../scss/variables';
+@import "../../../../scss/variables";
 
 .sidebar {
-  width: 270px;
+  width: 280px;
   height: 100vh;
   border-right: $light 1px solid;
 }
 
 span {
-  font-size: 0.70rem;
+  font-size: 0.7rem;
 }
 
 button {
@@ -28,10 +28,10 @@ fa-icon {
     grid-template-rows: 1fr 1fr 1fr;
     grid-area: grid1;
     grid-template-areas:
-    'icon1        title1        title1      title1        .           button1 button1'
-    '.            remaining1    remaining1  remaining1    remaining1  button1 button1'
-    '.            configs1      configs1    configs1      configs1    button2 button2'
-    '.            .             .           .             .           button2 button2';
+      "icon1        title1        title1      title1        .           button1 button1"
+      ".            remaining1    remaining1  remaining1    remaining1  button1 button1"
+      ".            configs1      configs1    configs1      configs1    button2 button2"
+      ".            .             .           .             .           button2 button2";
     &:hover {
       button {
         display: flex;
@@ -43,10 +43,10 @@ fa-icon {
     grid-template-rows: 1fr 1fr 1fr;
     grid-area: grid2;
     grid-template-areas:
-    'icon2        title2        title2      title2        .          button3 button3'
-    '.            remaining2    remaining2  remaining2    remaining2 button3 button3'
-    '.            configs2      configs2    configs2      configs2   button4 button4'
-    '.            .             .           .             .          button4 button4';
+      "icon2        title2        title2      title2        .          button3 button3"
+      ".            remaining2    remaining2  remaining2    remaining2 button3 button3"
+      ".            configs2      configs2    configs2      configs2   button4 button4"
+      ".            .             .           .             .          button4 button4";
     &:hover {
       button {
         display: flex;
@@ -58,8 +58,7 @@ fa-icon {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-area: grid3;
-    grid-template-areas:
-    'icon3 menu1 menu1 menu1 menu1 menu1 menu1';
+    grid-template-areas: "icon3 menu1 menu1 menu1 menu1 menu1 menu1";
     &:hover {
       background: #001f00;
     }
@@ -71,8 +70,8 @@ fa-icon {
     grid-template-rows: 1fr 1fr;
     grid-area: grid4;
     grid-template-areas:
-    'button5 button5 .  .  .  .  .  .'
-    'button5 button5 .  .  .  .  .  .';
+      "button5 button5 .  .  .  .  .  ."
+      "button5 button5 .  .  .  .  .  .";
   }
 }
 .icon {
@@ -159,31 +158,30 @@ fa-icon {
   }
 }
 
-
 .main-grid {
-  height: 317px;
+  height: 395px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    'sectionTitle1 sectionTitle1 sectionTitle1 sectionTitle1  sectionTitle1 sectionTitle1 sectionTitle1'
-    '.            .             .           .             .            .            .           '
-    'grid1        grid1         grid1       grid1         grid1        grid1        grid1       '
-    'grid1        grid1         grid1       grid1         grid1        grid1        grid1       '
-    'grid1        grid1         grid1       grid1         grid1        grid1        grid1       '
-    '.            .             .           .             .            .            .           '
-    'grid2        grid2         grid2       grid2         grid2        grid2        grid2       '
-    'grid2        grid2         grid2       grid2         grid2        grid2        grid2       '
-    'grid2        grid2         grid2       grid2         grid2        grid2        grid2       '
-    '.            .             .           .             .            .            .           '
-    '.            .             .           .             .            .            .           '
-    'sectionTitle2 sectionTitle2 sectionTitle2 sectionTitle2  sectionTitle2 sectionTitle2 sectionTitle2'
-    '.            .             .           .             .            .            .           '
-    'grid3        grid3         grid3       grid3         grid3        grid3        grid3       '
-    '.            .             .           .             .            .            .           '
-    '.            .             .           .             .            .            .           '
-    'sectionTitle3 sectionTitle3 sectionTitle3 sectionTitle3  sectionTitle3 sectionTitle3 sectionTitle3'
-    '.            .             .           .             .            .            .           '
-    'grid4        grid4         grid4       grid4         grid4        grid4        grid4       '
-    'grid4        grid4         grid4       grid4         grid4        grid4        grid4       ';
-  }
+    "sectionTitle1 sectionTitle1 sectionTitle1 sectionTitle1  sectionTitle1 sectionTitle1 sectionTitle1"
+    ".            .             .           .             .            .            .           "
+    "grid1        grid1         grid1       grid1         grid1        grid1        grid1       "
+    "grid1        grid1         grid1       grid1         grid1        grid1        grid1       "
+    "grid1        grid1         grid1       grid1         grid1        grid1        grid1       "
+    ".            .             .           .             .            .            .           "
+    "grid2        grid2         grid2       grid2         grid2        grid2        grid2       "
+    "grid2        grid2         grid2       grid2         grid2        grid2        grid2       "
+    "grid2        grid2         grid2       grid2         grid2        grid2        grid2       "
+    ".            .             .           .             .            .            .           "
+    ".            .             .           .             .            .            .           "
+    "sectionTitle2 sectionTitle2 sectionTitle2 sectionTitle2  sectionTitle2 sectionTitle2 sectionTitle2"
+    ".            .             .           .             .            .            .           "
+    "grid3        grid3         grid3       grid3         grid3        grid3        grid3       "
+    ".            .             .           .             .            .            .           "
+    ".            .             .           .             .            .            .           "
+    "sectionTitle3 sectionTitle3 sectionTitle3 sectionTitle3  sectionTitle3 sectionTitle3 sectionTitle3"
+    ".            .             .           .             .            .            .           "
+    "grid4        grid4         grid4       grid4         grid4        grid4        grid4       "
+    "grid4        grid4         grid4       grid4         grid4        grid4        grid4       ";
+}

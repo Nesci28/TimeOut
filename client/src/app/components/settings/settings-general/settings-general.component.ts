@@ -24,6 +24,7 @@ export class SettingsGeneralComponent implements OnInit {
     microSkips: new FormControl(0),
     normal: new FormControl(''),
     normalSkips: new FormControl(0),
+    image: new FormControl(''),
   });
 
   categories: ICategory[] = [

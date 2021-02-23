@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <section>
     <mat-checkbox formControlName="quotes" color="primary">
-      Show quotes on the break overlay?
+      Show a quote on the break overlay?
     </mat-checkbox>
 
     <ul *ngIf="form.get('quotes')!.value" class="ml-3">
@@ -13,7 +13,13 @@
     </ul>
   </section>
 
-  <div class="d-flex justify-content-end w-100">
+  <section class="my-3">
+    <mat-checkbox formControlName="image" color="primary">
+      Show an image on the break overlay?
+    </mat-checkbox>
+  </section>
+
+  <div class="d-flex justify-content-end w-100 mt-3">
     <button mat-raised-button color="accent" (click)="save()">Save</button>
   </div>
 </form>
