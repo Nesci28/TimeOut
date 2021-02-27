@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  quoteApiUrl: 'https://type.fit/api/quotes',
+  quoteApiUrl: 'https://quotes.rest',
+  unsplashApiUrl: 'https://api.unsplash.com',
+  unsplashKey: '4Houd65xh9oy4vdJjK1viXERa-4chZG9YXaiEoy76eE',
 };
 
 /*

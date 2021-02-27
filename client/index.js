@@ -44,6 +44,7 @@ function openOverlays() {
       visualEffectState: "active",
     });
     newWindow.loadURL("http://localhost:4200/overlay");
+    newWindow.webContents.openDevTools();
 
     newWindow.once("ready-to-show", () => {
       newWindow.show();

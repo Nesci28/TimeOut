@@ -7,7 +7,7 @@
     "serve": "ng serve",
     "electron": "wait-on http://localhost:4200 && electron .",
     "prestart": "npm run clean",
-    "start": "concurrently -k \"ng serve\" \"npm run electron\"",
+    "start": "npm run electron",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "ng build",

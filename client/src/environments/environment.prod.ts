@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  quoteApiUrl: 'https://type.fit/api/quotes',
+  quoteApiUrl: 'https://quotes.rest',
+  unsplashApiUrl: 'https://api.unsplash.com',
 };

@@ -9,10 +9,8 @@ import {
 import { ElectronService } from 'ngx-electron';
 
 import { Menu } from '../../../../interfaces/menu.interface';
-import { IQuote } from '../../../../interfaces/quotes.interface';
 import { ITimer } from '../../../../interfaces/timers.interface';
 import { BaseComponent } from '../base/base.component';
-import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -31,7 +29,6 @@ export class SidebarComponent
     },
   ];
 
-  // TODO: Change timer for the real saved value in localStorage
   timers: ITimer[] = [
     {
       interval: undefined,
@@ -46,13 +43,8 @@ export class SidebarComponent
       config: Number(localStorage.getItem('stConfig')) || 1000 * 60 * 30,
     },
   ];
-  quotes: IQuote[] = [];
 
-  constructor(
-    private sidebarService: SidebarService,
-    electronService: ElectronService,
-    router: Router
-  ) {
+  constructor(electronService: ElectronService, router: Router) {
     super(router, electronService);
   }
 
@@ -62,7 +54,6 @@ export class SidebarComponent
         this.updateRemaining(i);
       }, 1000);
     });
-    this.quotes = await this.getQuotes();
   }
 
   ngOnDestroy(): void {
@@ -78,18 +69,9 @@ export class SidebarComponent
       remaining: this.timers[index].remaining,
     });
     if (this.timers[index].remaining === 0) {
-      this.takeBreak();
+      this.openOverlay(this.timers[index].config);
       this.timers[index].remaining = this.timers[index].config;
     }
-  }
-
-  async getQuotes(): Promise<IQuote[]> {
-    return this.sidebarService.getQuotes().toPromise();
-  }
-
-  async takeBreak(): Promise<void> {
-    const quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
-    console.log('quote :>> ', quote);
   }
 
   redirect(url: string, queryParams: { [key: string]: string }): void {
@@ -104,7 +86,10 @@ export class SidebarComponent
     }, 1000);
   }
 
-  openOverlay(): void {
+  openOverlay(ms: number): void {
     this.renderer.send('openOverlays');
+    setTimeout(() => {
+      this.renderer.send('closeOverlays');
+    }, ms);
   }
 }
