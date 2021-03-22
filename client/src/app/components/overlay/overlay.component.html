@@ -1,16 +1,29 @@
 <div
-  class="overlay d-flex justify-content-center align-items-center flex-column"
+  class="overlay d-flex justify-content-center align-items-center flex-column background"
+  [ngStyle]="{'background-image': 'url(' + image?.urls?.full + ')'}"
 >
-  <h1 class="mb-4 text-dark">Break!</h1>
-  <div class="d-flex justify-content-around">
-    <button mat-flat-button color="warn" class="mr-4" (click)="skip()">
-      Skip
-    </button>
-    <button mat-flat-button color="accent" class="mr-4" (click)="postpone(1)">
-      Postpone (1 min.)
-    </button>
-    <button mat-flat-button color="accent" class="mr-4" (click)="postpone(5)">
-      Postpone (5 min.)
-    </button>
+  <div class="position-absolute" style="top: 0; left: 0;">
+    <h4 *ngIf="image?.user?.name" class="text-light">
+      image: {{ image?.user?.name }}
+    </h4>
+    <h4 *ngIf="quote?.author" class="text-light">
+      quote: {{ quote?.author }} - {{ quote?.category }}
+    </h4>
+  </div>
+  <div class="container p-4 rounded">
+    <h1 class="mb-4 text-light w-100 text-center">Break!</h1>
+    <mat-progress-bar class="mb-3 py-2" mode="determinate"  color="accent" [value]="progress"></mat-progress-bar>
+    <h2 class="mb-4 text-light w-100 text-center">{{ quote?.quote }}</h2>
+    <div class="d-flex justify-content-around">
+      <button mat-flat-button color="warn" class="mr-4" (click)="close()">
+        Skip
+      </button>
+      <button mat-flat-button color="accent" class="mr-4" (click)="postpone(1)">
+        Postpone (1 min.)
+      </button>
+      <button mat-flat-button color="accent" class="mr-4" (click)="postpone(5)">
+        Postpone (5 min.)
+      </button>
+    </div>
   </div>
 </div>

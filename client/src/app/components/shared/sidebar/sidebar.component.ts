@@ -87,7 +87,7 @@ export class SidebarComponent
   }
 
   openOverlay(ms: number): void {
-    this.renderer.send('openOverlays');
+    this.renderer.send('openOverlays', { ms });
     setTimeout(() => {
       this.renderer.send('closeOverlays');
     }, ms);
